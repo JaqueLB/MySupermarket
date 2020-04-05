@@ -7,7 +7,6 @@ target 'SuperM' do
 
   # Pods for SuperM
   pod 'Firebase/Analytics'
-  pod "Firebase/AdMob"
   pod "Firebase/Auth"
   pod "Firebase/Firestore"
   pod "Firebase/RemoteConfig"
