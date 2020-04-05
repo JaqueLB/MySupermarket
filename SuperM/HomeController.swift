@@ -8,7 +8,8 @@
 
 import UIKit
 
-class HomeController: UIViewController {
+// https://developer.apple.com/documentation/uikit/uinavigationcontroller
+class HomeController: UINavigationController {
     private lazy var menuText: UILabel = {
             let menuText = UILabel()
             menuText.textColor = UIColor.purple
