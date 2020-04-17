@@ -10,5 +10,7 @@ target 'SuperM' do
   pod "Firebase/Auth"
   pod "Firebase/Firestore"
   pod "Firebase/RemoteConfig"
+  pod "Firebase/Storage"
+  pod "Firebase/Messaging"
 
 end

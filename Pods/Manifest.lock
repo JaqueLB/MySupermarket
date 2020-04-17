@@ -177,9 +177,15 @@ PODS:
   - Firebase/Firestore (6.20.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.11.2)
+  - Firebase/Messaging (6.20.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.3.0)
   - Firebase/RemoteConfig (6.20.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 4.4.9)
+  - Firebase/Storage (6.20.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 3.6.0)
   - FirebaseABTesting (3.2.0):
     - FirebaseAnalyticsInterop (~> 1.3)
     - FirebaseCore (~> 6.1)
@@ -235,6 +241,15 @@ PODS:
     - FirebaseInstallations (~> 1.0)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/UserDefaults (~> 6.5)
+  - FirebaseMessaging (4.3.0):
+    - FirebaseAnalyticsInterop (~> 1.5)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Reachability (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseRemoteConfig (4.4.9):
     - FirebaseABTesting (~> 3.1)
     - FirebaseAnalyticsInterop (~> 1.4)
@@ -243,6 +258,10 @@ PODS:
     - GoogleUtilities/Environment (~> 6.2)
     - "GoogleUtilities/NSData+zlib (~> 6.2)"
     - Protobuf (>= 3.9.2, ~> 3.9)
+  - FirebaseStorage (3.6.0):
+    - FirebaseAuthInterop (~> 1.1)
+    - FirebaseCore (~> 6.6)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleAppMeasurement (6.3.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -301,7 +320,9 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
+  - Firebase/Messaging
   - Firebase/RemoteConfig
+  - Firebase/Storage
 
 SPEC REPOS:
   trunk:
@@ -319,7 +340,9 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseRemoteConfig
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -347,7 +370,9 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 71925e62a5d1cbfaff46aa4d5107e525cc48356a
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 7ee0d6777013bb952f377b41965bf132b6a075be
+  FirebaseMessaging: 4ec33842d36b3319e062e51fb8b35a74f726950d
   FirebaseRemoteConfig: 47abf7a04a9082091955ea555aa79cfdd249b19c
+  FirebaseStorage: b43ee271294227e1a3225544b073f3b49b427f46
   GoogleAppMeasurement: c29d405ff76e18551b5d158eaba6753fda8c7542
   GoogleDataTransport: a857c6a002d201b524dd4bc2ed7e7355ed07e785
   GoogleDataTransportCCTSupport: 32f75fbe904c82772fcbb6b6bd4525bfb6f2a862
@@ -360,6 +385,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
 
-PODFILE CHECKSUM: a3991c604af979385552219636f98a94b6ccfee1
+PODFILE CHECKSUM: 0d7e599057f88f0152a8647b66b53699920d49eb
 
 COCOAPODS: 1.9.1
