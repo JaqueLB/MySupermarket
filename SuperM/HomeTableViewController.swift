@@ -9,9 +9,16 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
-
+    var listOfProd = ["café da manhã", "terça-feira"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        // criar nova clase de cell para fazer a cell customizada
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "My Supermarket"
+//        navigationItem.largeTitleDisplayMode = .automatic
+        // chamadas async, fetch de banco de dados, na primeira vez a table view vem vazia, e após terminar a chamada do bd, damos um reload para exibir
+        tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -21,26 +28,23 @@ class HomeTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    // separações dentro da lista
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return listOfProd.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
+        cell.textLabel?.text = listOfProd[indexPath.row]
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
