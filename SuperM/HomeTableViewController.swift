@@ -10,13 +10,14 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     var listOfProd = ["café da manhã", "terça-feira"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // criar nova clase de cell para fazer a cell customizada
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "My Supermarket"
-//        navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(buttonTapped))
         // chamadas async, fetch de banco de dados, na primeira vez a table view vem vazia, e após terminar a chamada do bd, damos um reload para exibir
         tableView.reloadData()
 
@@ -25,6 +26,10 @@ class HomeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    @objc func buttonTapped() {
+        print("oi")
     }
 
     // MARK: - Table view data source
