@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+    var listOfLists = [GroceryItem]()
     var listOfProd = ["café da manhã", "terça-feira"]
 
     override func viewDidLoad() {
@@ -41,7 +42,7 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return listOfProd.count
+        return listOfLists.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
