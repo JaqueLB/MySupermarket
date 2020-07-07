@@ -16,7 +16,6 @@
 		037F32062437DDB500410609 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 037F32052437DDB500410609 /* Assets.xcassets */; };
 		037F32092437DDB500410609 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 037F32072437DDB500410609 /* LaunchScreen.storyboard */; };
 		03F3D1A42449E33100DEC839 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3D1A32449E33100DEC839 /* HomeTableViewController.swift */; };
-		9A46488C8FD086BC7E722557 /* Pods_SuperM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C0191F07933BF044A2D8CA /* Pods_SuperM.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +30,6 @@
 		037F32082437DDB500410609 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		037F320A2437DDB500410609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03F3D1A32449E33100DEC839 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
-		08C0191F07933BF044A2D8CA /* Pods_SuperM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0EF45B15C3F1ED39A80AEF6E /* Pods-SuperM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperM.release.xcconfig"; path = "Target Support Files/Pods-SuperM/Pods-SuperM.release.xcconfig"; sourceTree = "<group>"; };
-		C00A64430D3EAB01D12AE6F1 /* Pods-SuperM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperM.debug.xcconfig"; path = "Target Support Files/Pods-SuperM/Pods-SuperM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A46488C8FD086BC7E722557 /* Pods_SuperM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +140,6 @@
 				037F31FB2437DDB000410609 /* SuperM */,
 				037F31FA2437DDB000410609 /* Products */,
 				6E61B26093D791A0D1F30C31 /* Pods */,
-				FF5D50457B12C2F335946BEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,18 +168,8 @@
 		6E61B26093D791A0D1F30C31 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C00A64430D3EAB01D12AE6F1 /* Pods-SuperM.debug.xcconfig */,
-				0EF45B15C3F1ED39A80AEF6E /* Pods-SuperM.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		FF5D50457B12C2F335946BEE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				08C0191F07933BF044A2D8CA /* Pods_SuperM.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,11 +179,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 037F320D2437DDB500410609 /* Build configuration list for PBXNativeTarget "SuperM" */;
 			buildPhases = (
-				3C5BF95BCB4FC793EBEF8062 /* [CP] Check Pods Manifest.lock */,
 				037F31F52437DDB000410609 /* Sources */,
 				037F31F62437DDB000410609 /* Frameworks */,
 				037F31F72437DDB000410609 /* Resources */,
-				6E709AD3B90DB838E4356FD2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -442,7 +424,6 @@
 		};
 		037F320E2437DDB500410609 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C00A64430D3EAB01D12AE6F1 /* Pods-SuperM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -461,7 +442,6 @@
 		};
 		037F320F2437DDB500410609 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EF45B15C3F1ED39A80AEF6E /* Pods-SuperM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
