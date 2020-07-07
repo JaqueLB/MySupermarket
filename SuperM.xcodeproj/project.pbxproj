@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		03473C1E2477F30C00999E99 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03473C1D2477F30C00999E99 /* GroceryItem.swift */; };
+		0357B9DF24AA7A020033133A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357B9DE24AA7A020033133A /* AddItemViewController.swift */; };
+		0357B9E124AA7B570033133A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357B9E024AA7B570033133A /* HomeViewModel.swift */; };
 		0363A126248A70E400FF86BE /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363A125248A70E400FF86BE /* UITableViewCell+Ext.swift */; };
 		0363A128248A731D00FF86BE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363A127248A731D00FF86BE /* HomeTableViewCell.swift */; };
 		037F31FD2437DDB000410609 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F31FC2437DDB000410609 /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		03473C1D2477F30C00999E99 /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		0357B9DE24AA7A020033133A /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		0357B9E024AA7B570033133A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0363A125248A70E400FF86BE /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		0363A127248A731D00FF86BE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		037F31F92437DDB000410609 /* SuperM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +117,7 @@
 		0363A122248A700B00FF86BE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0357B9E024AA7B570033133A /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			children = (
 				037F32002437DDB000410609 /* HomeViewController.swift */,
 				03F3D1A32449E33100DEC839 /* HomeTableViewController.swift */,
+				0357B9DE24AA7A020033133A /* AddItemViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,58 +243,18 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3C5BF95BCB4FC793EBEF8062 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SuperM-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6E709AD3B90DB838E4356FD2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SuperM/Pods-SuperM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SuperM/Pods-SuperM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SuperM/Pods-SuperM-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		037F31F52437DDB000410609 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				03F3D1A42449E33100DEC839 /* HomeTableViewController.swift in Sources */,
+				0357B9E124AA7B570033133A /* HomeViewModel.swift in Sources */,
 				0363A126248A70E400FF86BE /* UITableViewCell+Ext.swift in Sources */,
 				0363A128248A731D00FF86BE /* HomeTableViewCell.swift in Sources */,
 				037F32012437DDB000410609 /* HomeViewController.swift in Sources */,
 				037F31FD2437DDB000410609 /* AppDelegate.swift in Sources */,
+				0357B9DF24AA7A020033133A /* AddItemViewController.swift in Sources */,
 				037F31FF2437DDB000410609 /* SceneDelegate.swift in Sources */,
 				03473C1E2477F30C00999E99 /* GroceryItem.swift in Sources */,
 			);
