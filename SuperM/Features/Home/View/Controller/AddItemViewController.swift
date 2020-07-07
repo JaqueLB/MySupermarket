@@ -1,0 +1,73 @@
+//
+//  AddItemViewController.swift
+//  SuperM
+//
+//  Created by Jaque on 29/06/20.
+//  Copyright © 2020 Jaqueline Lemes Botaro. All rights reserved.
+//
+
+import UIKit
+
+class AddItemViewController: UIViewController {
+    var viewModel: HomeViewModel
+    var saveButton: UIButton = {
+        var button = UIButton()
+        button.setTitle("Save", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(save), for: .touchUpInside)
+        return button
+    }()
+    lazy var listNameTextField: UITextField = {
+        var textField = UITextField()
+        textField.borderStyle = .roundedRect
+        // define where caret goes
+        textField.becomeFirstResponder()
+        // Homework: remover foco do first reponder ao clicar em qualquer outro lugar (dismiss keyboard)
+        return textField
+    }()
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUi()
+        dismissKeyboard()
+        
+    }
+    
+    @objc func save() {
+        // $text = !empty(listnametextfield.text) ? listnametexfield.text : ""; continue;
+        guard let text = listNameTextField.text, !text.isEmpty else { return }
+        viewModel.add(item: GroceryItem(id: UUID(), title: text))
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func dismissKeyboard() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func setupUi() {
+        view.backgroundColor = .systemBackground
+        view.addSubview(saveButton)
+        view.addSubview(listNameTextField)
+        
+        // ao abrir {} estamos identificando cada elemento com $0 e acessando suas propriedades
+        view.subviews.forEach({
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        })
+        
+        NSLayoutConstraint.activate([
+            listNameTextField.bottomAnchor.constraint(equalTo: saveButton.topAnchor),
+            listNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            listNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            saveButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+}
