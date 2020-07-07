@@ -9,44 +9,28 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
-    private var listCollection = [GroceryItem]()
-    private var dataSource: UITableViewDiffableDataSource<SectionListCollection, GroceryItem>?
-
+    private var viewModel = HomeViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
-        setupDataSource()
+        viewModel.setupDataSource(for: tableView)
     }
-
+    
     @objc func addButtonTapped() {
-        print("oi")
+        present(AddItemViewController(viewModel: viewModel), animated: true, completion: nil)
     }
-
+    
     func setupNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "My Supermarket"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addButtonTapped))
+        let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addButtonTapped))
+        let loginButton = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItems = [addButton, loginButton]
     }
-
+    
     func setupTableView() {
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.reuseIdentifier)
-    }
-}
-
-extension HomeTableViewController {
-    func setupDataSource() {
-        dataSource = UITableViewDiffableDataSource<SectionListCollection, GroceryItem>(tableView: tableView, cellProvider: {
-            (tableView, indexPath, groceryItem) -> HomeTableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.reuseIdentifier, for: indexPath) as! HomeTableViewCell
-            return cell
-        }
-    }
-
-    func snapshot(from listCollection: [GroceryItem]) {
-        var snapshot = NSDiffableDataSourceSnapshot<SectionListCollection, GroceryItem>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(listCollection, toSection: .main)
-        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
