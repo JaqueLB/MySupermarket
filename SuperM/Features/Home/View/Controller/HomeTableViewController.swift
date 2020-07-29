@@ -15,22 +15,63 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         setupNavigation()
         setupTableView()
-        viewModel.setupDataSource(for: tableView)
+        setupViewModel()
     }
     
     @objc func addButtonTapped() {
+        // navegacao sem modal, outra tela
+//        navigationController?.pushViewController(AddItemViewController(viewModel: viewModel), animated: true)
+        // modal, adiciona outro item a hierarquia
         present(AddItemViewController(viewModel: viewModel), animated: true, completion: nil)
+    }
+
+    @objc func loginButtonTapped() {
+        present(LoginViewController(viewModel: viewModel), animated: true, completion: nil)
     }
     
     func setupNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "My Supermarket"
         let addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addButtonTapped))
-        let loginButton = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(addButtonTapped))
+        let loginButton = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(loginButtonTapped))
         navigationItem.rightBarButtonItems = [addButton, loginButton]
     }
     
     func setupTableView() {
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.reuseIdentifier)
     }
+
+    func setupViewModel() {
+       viewModel.setupDataSource(for: tableView)
+//        viewModel.delegate = self
+        viewModel.didTapGroceryList = { itemDetailController in
+            self.navigationController?.pushViewController(itemDetailController, animated: true)
+        }
+    }
 }
+
+extension HomeTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRowAt(indexPath)
+    }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextItem = UIContextualAction(style: .destructive, title: "delete") { (contextualAction, view, boolValue) in
+            self.viewModel.deleteRowAt(indexPath)
+        }
+
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+
+        return swipeActions
+    }
+}
+
+//extension HomeTableViewController:HomeViewModelDelegate {
+//    var controller: UIViewController {
+//        return self
+//    }
+//}

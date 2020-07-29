@@ -22,7 +22,6 @@ class AddItemViewController: UIViewController {
         textField.borderStyle = .roundedRect
         // define where caret goes
         textField.becomeFirstResponder()
-        // Homework: remover foco do first reponder ao clicar em qualquer outro lugar (dismiss keyboard)
         return textField
     }()
     init(viewModel: HomeViewModel) {
@@ -37,7 +36,6 @@ class AddItemViewController: UIViewController {
         super.viewDidLoad()
         setupUi()
         dismissKeyboard()
-        
     }
     
     @objc func save() {
@@ -46,9 +44,13 @@ class AddItemViewController: UIViewController {
         viewModel.add(item: GroceryItem(id: UUID(), title: text))
         dismiss(animated: true, completion: nil)
     }
+
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
     
     func dismissKeyboard() {
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)
     }
     
@@ -69,5 +71,13 @@ class AddItemViewController: UIViewController {
             saveButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+    }
+}
+
+// delegate: goes with protocols, come from core. Protocol is kind of an interface in PHP. Delegates are abstract functions.
+extension AddItemViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
