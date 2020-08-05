@@ -42,15 +42,28 @@ class HomeTableViewController: UITableViewController {
     }
 
     func setupViewModel() {
-       viewModel.setupDataSource(for: tableView)
-//        viewModel.delegate = self
         viewModel.didTapGroceryList = { itemDetailController in
             self.navigationController?.pushViewController(itemDetailController, animated: true)
+        }
+        viewModel.refreshData = {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 }
 
 extension HomeTableViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(section)
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.reuseIdentifier, for: indexPath) as! HomeTableViewCell
+        cell.populate(viewModel.cellForRowAt(indexPath))
+        return cell
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRowAt(indexPath)
     }
@@ -69,9 +82,3 @@ extension HomeTableViewController {
         return swipeActions
     }
 }
-
-//extension HomeTableViewController:HomeViewModelDelegate {
-//    var controller: UIViewController {
-//        return self
-//    }
-//}

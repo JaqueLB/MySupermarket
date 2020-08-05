@@ -9,14 +9,7 @@
 import UIKit
 
 class ItemDetailViewController: UIViewController {
-//    var item: GroceryItem! // do not use. Force unwrap - eu como dev garanto que tem sempre informacao dentro dela - la garantia soy jho
-
-    var itemNoWrap: GroceryItem? // pode ter valor ou nao
-//    var addButton: UIBarButtonItem = {
-//        var button = UIBarButtonItem()
-//        button.set
-//        return button
-//    }()
+    var itemNoWrap: GroceryItem?
 
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
@@ -27,7 +20,6 @@ class ItemDetailViewController: UIViewController {
 
     func setupNavigation() {
         guard let item = itemNoWrap else { return }
-//        navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = item.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(didTapAddButton))
     }

@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-//    var usernameTextField: UITextField
 
     @objc func login() {
         print("login")
@@ -27,7 +26,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupModal()
-        // Do any additional setup after loading the view.
     }
 
     required init?(coder: NSCoder) {
