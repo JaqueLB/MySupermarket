@@ -17,6 +17,8 @@ class HomeViewModel: NSObject {
 
     var refreshData: (() -> Void)?
 
+    var didEditGroceryItem: ((GroceryItem) -> Void)?
+
     func add(item: GroceryItem) {
         groceries.append(item)
         refreshData?()
@@ -39,5 +41,9 @@ class HomeViewModel: NSObject {
     func deleteRowAt(_ indexPath: IndexPath) {
         groceries.remove(at: indexPath.row)
         refreshData?()
+    }
+
+    func editRowAt(_ indexPath:IndexPath) {
+        didEditGroceryItem?(cellForRowAt(indexPath))
     }
 }

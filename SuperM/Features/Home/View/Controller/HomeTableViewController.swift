@@ -22,7 +22,7 @@ class HomeTableViewController: UITableViewController {
         // navegacao sem modal, outra tela
 //        navigationController?.pushViewController(AddItemViewController(viewModel: viewModel), animated: true)
         // modal, adiciona outro item a hierarquia
-        present(AddItemViewController(viewModel: viewModel), animated: true, completion: nil)
+        present(AddItemViewController(viewModel: viewModel, groceryItem: nil), animated: true, completion: nil)
     }
 
     @objc func loginButtonTapped() {
@@ -50,6 +50,9 @@ class HomeTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        viewModel.didEditGroceryItem = { item in
+            self.present(AddItemViewController(viewModel: self.viewModel, groceryItem: item), animated: true, completion: nil)
+        }
     }
 }
 
@@ -73,11 +76,17 @@ extension HomeTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let contextItem = UIContextualAction(style: .destructive, title: "delete") { (contextualAction, view, boolValue) in
+        let deleteItem = UIContextualAction(style: .destructive, title: "delete") { (contextualAction, view, boolValue) in
             self.viewModel.deleteRowAt(indexPath)
         }
 
-        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+        let editItem = UIContextualAction(style: .normal, title: "edit") { (contextualAction, view, boolValue) in
+            self.viewModel.editRowAt(indexPath)
+        }
+
+        editItem.backgroundColor = .systemGreen
+
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem, editItem])
 
         return swipeActions
     }

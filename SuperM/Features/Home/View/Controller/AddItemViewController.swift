@@ -10,6 +10,7 @@ import UIKit
 
 class AddItemViewController: UIViewController {
     var viewModel: HomeViewModel
+    var groceryItem: GroceryItem?
     var saveButton: UIButton = {
         var button = UIButton()
         button.setTitle("Save", for: .normal)
@@ -24,8 +25,9 @@ class AddItemViewController: UIViewController {
         textField.becomeFirstResponder()
         return textField
     }()
-    init(viewModel: HomeViewModel) {
+    init(viewModel: HomeViewModel, groceryItem: GroceryItem?) {
         self.viewModel = viewModel
+        self.groceryItem = groceryItem
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,6 +38,9 @@ class AddItemViewController: UIViewController {
         super.viewDidLoad()
         setupUi()
         dismissKeyboard()
+        if let item = groceryItem {
+            listNameTextField.text = item.title
+        }
     }
     
     @objc func save() {
