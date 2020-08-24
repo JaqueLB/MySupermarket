@@ -11,6 +11,7 @@ import UIKit
 class AddItemViewController: UIViewController {
     var viewModel: HomeViewModel
     var groceryItem: GroceryItem?
+    var itemIndex: Int?
     var saveButton: UIButton = {
         var button = UIButton()
         button.setTitle("Save", for: .normal)
@@ -25,9 +26,10 @@ class AddItemViewController: UIViewController {
         textField.becomeFirstResponder()
         return textField
     }()
-    init(viewModel: HomeViewModel, groceryItem: GroceryItem?) {
+    init(viewModel: HomeViewModel, groceryItem: GroceryItem?, itemIndex: Int?) {
         self.viewModel = viewModel
         self.groceryItem = groceryItem
+        self.itemIndex = itemIndex
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,7 +48,13 @@ class AddItemViewController: UIViewController {
     @objc func save() {
         // $text = !empty(listnametextfield.text) ? listnametexfield.text : ""; continue;
         guard let text = listNameTextField.text, !text.isEmpty else { return }
-        viewModel.add(item: GroceryItem(id: UUID(), title: text))
+
+        if (viewModel.isEditing) {
+            guard let index = itemIndex else {return}
+            viewModel.edit(index: index, newItem: GroceryItem(id: UUID(), title: text))
+        } else {
+            viewModel.add(item: GroceryItem(id: UUID(), title: text))
+        }
         dismiss(animated: true, completion: nil)
     }
 

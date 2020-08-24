@@ -22,7 +22,8 @@ class HomeTableViewController: UITableViewController {
         // navegacao sem modal, outra tela
 //        navigationController?.pushViewController(AddItemViewController(viewModel: viewModel), animated: true)
         // modal, adiciona outro item a hierarquia
-        present(AddItemViewController(viewModel: viewModel, groceryItem: nil), animated: true, completion: nil)
+        viewModel.isEditing = false
+        present(AddItemViewController(viewModel: viewModel, groceryItem: nil, itemIndex: nil), animated: true, completion: nil)
     }
 
     @objc func loginButtonTapped() {
@@ -50,8 +51,9 @@ class HomeTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-        viewModel.didEditGroceryItem = { item in
-            self.present(AddItemViewController(viewModel: self.viewModel, groceryItem: item), animated: true, completion: nil)
+        viewModel.didEditGroceryItem = { item, index in
+            self.viewModel.isEditing = true
+            self.present(AddItemViewController(viewModel: self.viewModel, groceryItem: item, itemIndex: index), animated: true, completion: nil)
         }
     }
 }

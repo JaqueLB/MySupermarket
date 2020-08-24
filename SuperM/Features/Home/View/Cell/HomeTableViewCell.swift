@@ -35,7 +35,10 @@ class HomeTableViewCell: UITableViewCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
         })
 
-        NSLayoutConstraint.activate([// fazer o item se ajustar de acordo com o texto
+        // fazer o item se ajustar de acordo com o texto
+        itemTitle.autoresizesSubviews = true
+
+        NSLayoutConstraint.activate([
             itemTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             itemTitle.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])

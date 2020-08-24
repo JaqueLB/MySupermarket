@@ -17,10 +17,17 @@ class HomeViewModel: NSObject {
 
     var refreshData: (() -> Void)?
 
-    var didEditGroceryItem: ((GroceryItem) -> Void)?
+    var didEditGroceryItem: ((GroceryItem, Int) -> Void)?
+
+    var isEditing = false
 
     func add(item: GroceryItem) {
         groceries.append(item)
+        refreshData?()
+    }
+
+    func edit(index: Int, newItem: GroceryItem) {
+        groceries[index] = newItem
         refreshData?()
     }
 
@@ -44,6 +51,6 @@ class HomeViewModel: NSObject {
     }
 
     func editRowAt(_ indexPath:IndexPath) {
-        didEditGroceryItem?(cellForRowAt(indexPath))
+        didEditGroceryItem?(cellForRowAt(indexPath), indexPath.row)
     }
 }
