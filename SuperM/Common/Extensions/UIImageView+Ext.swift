@@ -23,7 +23,6 @@ extension UIImageView {
         Service().fetch(url: url) { (result) in
             // same Result from Apple
             switch result {
-
             case .success(let image):
                 cache.setObject(image, forKey: key as AnyObject)
                 // image could be still loading from service
