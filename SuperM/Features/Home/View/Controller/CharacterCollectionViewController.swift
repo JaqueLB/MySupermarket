@@ -59,5 +59,23 @@ extension CharacterCollectionViewController {
 
 // MARK: - Delegates for layout
 extension CharacterCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // width inteira da tela dividido por 3 - os espacos
+        let width = (UIScreen.main.bounds.width / 3) - 16
+        return CGSize(width: width, height: 148)
+    }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
 }
+
+// Desafio para semana que vem: Criar um click para cada item, e uma tela de detalhes, passando algum dado desse item para a proxima tela
