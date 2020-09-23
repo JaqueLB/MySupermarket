@@ -23,7 +23,16 @@ class CharacterViewModel {
         return results[indexPath.item]
     }
 
-    func populate(with url: String) {
+    func willDisplayAt(_ indexPath: IndexPath, completion: @escaping () -> Void) {
+        if results.last?.id == results[indexPath.item].id {
+            guard let nextPageUrl = character?.info.next else { return }
+            fetch(with: nextPageUrl) {
+                completion()
+            }
+        }
+    }
+
+    func fetch(with url: String, completion: @escaping () -> Void) {
         service.fetch(url: url, type: Character.self) { (result) in
             switch result {
             case .success(let character):
@@ -32,18 +41,10 @@ class CharacterViewModel {
                 character.results.forEach { (result) in
                     self.results.append(result)
                 }
+                completion()
             case .failure(let error):
                 print(error)
             }
         }
-    }
-
-    func fetchCharacters() {
-        let url = "https://rickandmortyapi.com/api/character/"
-        populate(with: url)
-    }
-
-    func fetchNextCharacters(url: String) {
-        populate(with: url)
     }
 }
