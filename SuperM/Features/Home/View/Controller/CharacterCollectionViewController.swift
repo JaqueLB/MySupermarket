@@ -13,6 +13,14 @@ class CharacterCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
+        setupCollectionView()
+        // [weak self] is here to avoid memory leak
+        viewModel.fetch(with: "https://rickandmortyapi.com/api/character/") { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
     }
 
     func setupCollectionView() {
@@ -38,6 +46,14 @@ extension CharacterCollectionViewController {
         cell.populate(result: viewModel.cellForItemAt(indexPath))
 
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        viewModel.willDisplayAt(indexPath) { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
     }
 }
 
