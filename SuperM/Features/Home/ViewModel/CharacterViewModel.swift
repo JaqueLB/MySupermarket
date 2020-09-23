@@ -15,11 +15,11 @@ class CharacterViewModel {
 
     private lazy var character: Character? = nil
 
-    func numberOfItems(_ section:Int) -> Int {
+    func numberOfItems(_ section: Int) -> Int {
         return results.count
     }
 
-    func cellForItemAt(_ indexPath:IndexPath) -> Results {
+    func cellForItemAt(_ indexPath: IndexPath) -> Results {
         return results[indexPath.item]
     }
 
