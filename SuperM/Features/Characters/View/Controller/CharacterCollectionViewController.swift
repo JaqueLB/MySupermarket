@@ -15,12 +15,7 @@ class CharacterCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         setupNavigation()
         setupCollectionView()
-        // [weak self] is here to avoid memory leak
-        viewModel.fetch(with: "https://rickandmortyapi.com/api/character/") { [weak self] in
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
-        }
+        setupViewModel()
     }
 
     func setupCollectionView() {
@@ -31,6 +26,18 @@ class CharacterCollectionViewController: UICollectionViewController {
     func setupNavigation() {
         navigationItem.title = "Rick and Morty"
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    func setupViewModel() {
+        viewModel.didTapCharacter = { characterDetailController in self.navigationController?.pushViewController(characterDetailController, animated: true)
+        }
+
+        // [weak self] is here to avoid memory leak
+        viewModel.fetch(with: "https://rickandmortyapi.com/api/character/") { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
     }
 }
 
@@ -54,6 +61,10 @@ extension CharacterCollectionViewController {
                 self?.collectionView.reloadData()
             }
         }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectItemAt(indexPath)
     }
 }
 

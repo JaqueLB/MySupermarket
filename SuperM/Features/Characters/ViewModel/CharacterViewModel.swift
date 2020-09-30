@@ -15,6 +15,8 @@ class CharacterViewModel {
 
     private lazy var character: Character? = nil
 
+    var didTapCharacter: ((CharacterDetailViewController) -> Void)?
+
     func numberOfItems(_ section: Int) -> Int {
         return results.count
     }
@@ -46,5 +48,11 @@ class CharacterViewModel {
                 print(error)
             }
         }
+    }
+
+    func didSelectItemAt(_ indexPath: IndexPath) {
+        let characterDetailViewController = CharacterDetailViewController()
+        characterDetailViewController.character = cellForItemAt(indexPath)
+        didTapCharacter?(characterDetailViewController)
     }
 }
